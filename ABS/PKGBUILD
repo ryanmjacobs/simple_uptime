@@ -1,0 +1,25 @@
+# Maintainer: Ryan Jacobs <ryan.mjacobs@gmail.com>
+pkgname=simple_uptime
+pkgver=1.1
+pkgrel=3
+epoch=
+pkgdesc="A fast, simple uptime command for Linux."
+arch=('any')
+url=""
+license=('MIT')
+options=('strip' 'zipman')
+install=
+changelog=ChangeLog
+source=($pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('e71de169a33d7538c4f2e86dbc308d71')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    make
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    install -D -m 0775 ${pkgname} ${pkgdir}/usr/bin/$pkgname
+}
