@@ -4,13 +4,14 @@
 #
 # Build an ABS package from the source code.
 # We'll assume GNU tar, not bsdtar or anything else.
+# Note: update this file and PKGBUILD for each version.
 #
 # Maintained By: Ryan Jacobs <ryan.mjacobs@gmail.com>
 # Sept. 22, 2014 -> File creation.
 ################################################################################
 
 # Global Variables
-version=1.1
+version=1.2
 pkgname=simple_uptime
 
 build() {

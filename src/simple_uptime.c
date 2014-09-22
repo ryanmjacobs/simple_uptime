@@ -1,15 +1,15 @@
 /**
  * @file     simple_uptime.c
- * @version  1.1
+ * @version  1.2
  * @brief    Display uptime as: N days, HH:MM:SS.\n
  *           Ex: 1 day, 02:34:56
  *
  * @detail
- *           It's useful for people who need an uptime with
- *           seconds. I use it for my dwm statusbar.
+ *           Mainly useful for getting uptime in seconds resolution.\n
+ *           And, it's 0.001s faster than the default command!
  *
- * @author   Ryan Jacobs (ryan.mjacobs@gmail.com)
- * @date     May 06, 2014
+ * @author   Ryan Jacobs <ryan.mjacobs@gmail.com>
+ * @date     September 22, 2014
  * @bug      No known bugs.
  */
 
@@ -23,42 +23,45 @@ struct Time {
     unsigned int seconds;
 };
 
+/* Function Prototypes */
 long int get_uptime(void);
-void format_seconds(struct Time *time, long unsigned int seconds);
+struct Time seconds_to_Time(long int seconds);
 
+/* Main Program */
 int main(void) {
-    struct Time uptime;
+    struct Time u = seconds_to_Time(get_uptime());
 
-    format_seconds(&uptime, get_uptime());
-
-    if (uptime.days == 1)
-        printf("%u day, %02u:%02u:%02u\n", uptime.days, uptime.hours, uptime.minutes, uptime.seconds);
+    if (u.days == 1)
+        printf("%u day, %02u:%02u:%02u\n",  u.days, u.hours, u.minutes, u.seconds);
     else
-        printf("%u days, %02u:%02u:%02u\n", uptime.days, uptime.hours, uptime.minutes, uptime.seconds);
+        printf("%u days, %02u:%02u:%02u\n", u.days, u.hours, u.minutes, u.seconds);
 
     return 0;
 }
 
-void format_seconds(struct Time *time, long unsigned int seconds) {
+struct Time seconds_to_Time(long int seconds) {
+    struct Time t;
     long int remainder;
 
-    time->days    = seconds / (60 * 60 * 24);
-    remainder     = seconds % (60 * 60 * 24);
+    t.days     = seconds / (60 * 60 * 24);
+    remainder  = seconds % (60 * 60 * 24);
 
-    time->hours   = remainder / (60 * 60);
-    remainder     = remainder % (60 * 60);
+    t.hours    = remainder / (60 * 60);
+    remainder  = remainder % (60 * 60);
 
-    time->minutes = remainder / 60;
-    time->seconds = remainder % 60;
+    t.minutes  = remainder / 60;
+    t.seconds  = remainder % 60;
+
+    return t;
 }
 
 long int get_uptime(void) {
-    int error;
     struct sysinfo s_info;
 
-    error = sysinfo(&s_info);
+    if (sysinfo(&s_info) == -1) {
+        perror("Error: sysinfo");
+        return 0; // not success, but 0 seconds of uptime
+    }
 
-    if(error != 0)
-        printf("Error reading sysinfo. Error code: %d\n", error);
     return s_info.uptime;
 }
