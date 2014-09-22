@@ -1,6 +1,6 @@
 /**
  * @file     simple_uptime.c
- * @version  1.0
+ * @version  1.1
  * @brief    Display uptime as: N days, HH:MM:SS.\n
  *           Ex: 1 day, 02:34:56
  *
@@ -31,10 +31,10 @@ int main(void) {
 
     format_seconds(&uptime, get_uptime());
 
-    if (uptime.days > 1)
-        printf("%u days, %02u:%02u:%02u\n", uptime.days, uptime.hours, uptime.minutes, uptime.seconds);
-    else
+    if (uptime.days == 1)
         printf("%u day, %02u:%02u:%02u\n", uptime.days, uptime.hours, uptime.minutes, uptime.seconds);
+    else
+        printf("%u days, %02u:%02u:%02u\n", uptime.days, uptime.hours, uptime.minutes, uptime.seconds);
 
     return 0;
 }
