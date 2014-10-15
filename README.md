@@ -4,7 +4,8 @@ simple_uptime
 A fast, simple uptime command for Linux.
 ---
 
-## Build & Install
+Build & Install
+---------------
 
 #### Arch Linux
 The build and install process has been streamlined for Arch Linux users.
@@ -20,7 +21,8 @@ make
 make install
 ```
 
-## Uninstall
+Uninstall
+---------
 
 #### Arch Linux
 ```
@@ -32,6 +34,9 @@ pacman -Rns simple_uptime
 make uninstall
 ```
 
-## License
-MIT License - see LICENSE<br>
+License
+-------
+
+MIT License - see LICENSE
+
 Copyright (c) 2014 Ryan Jacobs
