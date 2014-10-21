@@ -8,6 +8,7 @@
 #
 # Maintained By: Ryan Jacobs <ryan.mjacobs@gmail.com>
 # Sept. 22, 2014 -> File creation.
+#  Oct. 20, 2014 -> Change file names to global variables.
 ################################################################################
 
 # Global Variables
@@ -35,7 +36,7 @@ build() {
 
     # Move ABS package to current directory
     printf "Moving ABS package to current directory... "
-    mv ABS/simple_uptime*.pkg.tar.xz .
+    mv "ABS/$pkgname*.pkg.tar.xz" .
     printf "done!\n"
 
     return 0
@@ -44,7 +45,7 @@ build() {
 clean() {
     # Remove ABS package
     printf "Removing ABS package... "
-    rm simple_uptime*.pkg.tar.xz
+    rm "$pkgname*.pkg.tar.xz"
     printf "                   done!\n"
 
     return 0
