@@ -36,7 +36,7 @@ build() {
 
     # Move ABS package to current directory
     printf "Moving ABS package to current directory... "
-    mv "ABS/$pkgname*.pkg.tar.xz" .
+    mv "ABS/$pkgname"*.pkg.tar.xz .
     printf "done!\n"
 
     return 0
@@ -45,7 +45,7 @@ build() {
 clean() {
     # Remove ABS package
     printf "Removing ABS package... "
-    rm "$pkgname*.pkg.tar.xz"
+    rm "$pkgname"*.pkg.tar.xz
     printf "                   done!\n"
 
     return 0
