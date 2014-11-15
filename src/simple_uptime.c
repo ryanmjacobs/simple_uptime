@@ -5,8 +5,8 @@
  *           Ex: 1 day, 02:34:56
  *
  * @detail
- *           Mainly useful for getting uptime in seconds resolution.\n
- *           And, it's 0.001s faster than the default command!
+ *           A fast, simple uptime command for Linux.\n
+ *           And, it's 0.001s faster than the default uptime command!
  *
  * @author   Ryan Jacobs <ryan.mjacobs@gmail.com>
  * @date     September 22, 2014
