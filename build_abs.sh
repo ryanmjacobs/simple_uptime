@@ -12,7 +12,7 @@
 ################################################################################
 
 # Global Variables
-version=1.2
+version=1.3
 pkgname=simple_uptime
 
 build() {
