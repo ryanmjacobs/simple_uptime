@@ -1,6 +1,6 @@
 /**
  * @file     simple_uptime.c
- * @version  1.2
+ * @version  1.3
  * @brief    Display uptime as: N days, HH:MM:SS.\n
  *           Ex: 1 day, 02:34:56
  *
@@ -16,52 +16,30 @@
 #include <stdio.h>
 #include <sys/sysinfo.h>
 
-struct Time {
-    unsigned int days;
-    unsigned int hours;
-    unsigned int minutes;
-    unsigned int seconds;
-};
-
-/* Function Prototypes */
-long int get_uptime(void);
-struct Time seconds_to_Time(long int seconds);
-
-/* Main Program */
 int main(void) {
-    struct Time u = seconds_to_Time(get_uptime());
-
-    if (u.days == 1)
-        printf("%u day, %02u:%02u:%02u\n",  u.days, u.hours, u.minutes, u.seconds);
-    else
-        printf("%u days, %02u:%02u:%02u\n", u.days, u.hours, u.minutes, u.seconds);
-
-    return 0;
-}
-
-struct Time seconds_to_Time(long int seconds) {
-    struct Time t;
     long int remainder;
-
-    t.days     = seconds / (60 * 60 * 24);
-    remainder  = seconds % (60 * 60 * 24);
-
-    t.hours    = remainder / (60 * 60);
-    remainder  = remainder % (60 * 60);
-
-    t.minutes  = remainder / 60;
-    t.seconds  = remainder % 60;
-
-    return t;
-}
-
-long int get_uptime(void) {
     struct sysinfo s_info;
+    unsigned int days, hours, minutes, seconds;
 
     if (sysinfo(&s_info) == -1) {
-        perror("Error: sysinfo");
-        return 0; // not success, but 0 seconds of uptime
+        perror("error: sysinfo");
+        return 1;
     }
 
-    return s_info.uptime;
+    seconds   = s_info.uptime;
+    days      = seconds / (60 * 60 * 24);
+    remainder = seconds % (60 * 60 * 24);
+
+    hours     = remainder / (60 * 60);
+    remainder = remainder % (60 * 60);
+
+    minutes   = remainder / 60;
+    seconds   = remainder % 60;
+
+    if (days == 1)
+        printf("%u day, %02u:%02u:%02u\n",  days, hours, minutes, seconds);
+    else
+        printf("%u days, %02u:%02u:%02u\n", days, hours, minutes, seconds);
+
+    return 0;
 }
