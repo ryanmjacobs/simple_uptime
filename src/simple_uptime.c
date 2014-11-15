@@ -37,7 +37,7 @@ int main(void) {
     seconds   = remainder % 60;
 
     if (days == 1)
-        printf("%u day, %02u:%02u:%02u\n",  days, hours, minutes, seconds);
+        printf("1 day, %02u:%02u:%02u\n", hours, minutes, seconds);
     else
         printf("%u days, %02u:%02u:%02u\n", days, hours, minutes, seconds);
 
