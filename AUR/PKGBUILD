@@ -1,6 +1,6 @@
 # Maintainer: Ryan Jacobs <ryan.mjacobs@gmail.com>
 pkgname=simple_uptime
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A fast, simple uptime command for Linux."
 arch=('any')
@@ -10,7 +10,7 @@ options=('strip' 'zipman')
 changelog=ChangeLog
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('')
+md5sums=('a6fa82a5181b28cfce5ea850d27e87c9')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

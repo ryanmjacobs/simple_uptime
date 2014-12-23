@@ -1,6 +1,6 @@
 /**
  * @file     simple_uptime.c
- * @version  1.3
+ * @version  1.4
  * @brief    Display uptime as: N days, HH:MM:SS.\n
  *           Ex: 1 day, 02:34:56
  *
