@@ -20,14 +20,9 @@ $ simple_uptime
 
 Build & Install
 ---------------
-
 #### Arch Linux
-The build and install process has been streamlined for Arch Linux users.
-```
-./build_abs.sh build
-pacman -U simple_uptime*.pkg.tar.xz
-./build_abs.sh clean
-```
+If you're running Arch, here's the [AUR package](https://aur.archlinux.org/packages/simple_uptime).
+(You know what to do.)
 
 #### Other Distos
 ```
@@ -37,13 +32,6 @@ make install
 
 Uninstall
 ---------
-
-#### Arch Linux
-```
-pacman -Rns simple_uptime
-```
-
-#### Other Distros
 ```
 make uninstall
 ```
