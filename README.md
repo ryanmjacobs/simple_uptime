@@ -41,4 +41,4 @@ License
 
 MIT License - see LICENSE
 
-Copyright (c) 2017 Ryan Jacobs
+Copyright (c) 2018 Ryan Jacobs
